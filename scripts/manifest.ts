@@ -1,3 +1,6 @@
+import { mkdirp } from "fs-extra";
+import { join } from "path";
+
 const manifest = `{
   "manifest_version": 2,
   "name": "NAME",
@@ -19,4 +22,6 @@ const manifest = `{
   "permissions": []
 }`;
 
-//
+(async () => {
+  await mkdirp(join(__dirname, "..", "dist"));
+})();
