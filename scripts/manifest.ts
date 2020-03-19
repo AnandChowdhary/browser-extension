@@ -8,7 +8,7 @@ const manifest = {
   description: "",
   version: "0.0.0",
   browser_action: {
-    default_icon: "icon-16.png",
+    default_icon: "icon16.png",
     default_popup: "popup.html"
   },
   background: {
@@ -16,9 +16,9 @@ const manifest = {
     persistent: false
   },
   icons: {
-    "16": "icon-16.png",
-    "48": "icon-48.png",
-    "128": "icon1-28.png"
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   },
   permissions: []
 };
@@ -36,6 +36,6 @@ const sizes = [128, 48, 38, 19, 16];
   for await (const size of sizes) {
     await sharp(icon)
       .resize(size, size)
-      .toFile(join(__dirname, "..", "dist", `icon-${size}.png`));
+      .toFile(join(__dirname, "..", "dist", `icon${size}.png`));
   }
 })();
