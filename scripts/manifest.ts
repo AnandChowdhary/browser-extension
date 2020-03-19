@@ -1,5 +1,6 @@
-import { mkdirp, writeJson, readJson } from "fs-extra";
+import { mkdirp, writeJson, readJson, readFile, writeFile } from "fs-extra";
 import { join } from "path";
+import sharp from "sharp";
 
 const manifest = {
   manifest_version: 2,
@@ -22,6 +23,8 @@ const manifest = {
   permissions: []
 };
 
+const sizes = [128, 48, 38, 19, 16];
+
 (async () => {
   await mkdirp(join(__dirname, "..", "dist"));
   const pkg = await readJson(join(__dirname, "..", "package.json"));
@@ -29,4 +32,8 @@ const manifest = {
   manifest.description = pkg.description;
   manifest.version = pkg.version;
   await writeJson(join(__dirname, "..", "dist", "manifest.json"), manifest);
+  const icon = await readFile(join(__dirname, "..", "static", "icon.png"));
+  for await (const size of sizes) {
+    // await writeFile(join(__dirname, "..", "dist", `icon-${size}.png`), icon);
+  }
 })();
