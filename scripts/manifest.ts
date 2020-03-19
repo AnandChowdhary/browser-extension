@@ -11,6 +11,7 @@ const manifest = {
     default_icon: "icon16.png",
     default_popup: "popup.html"
   },
+  options_page: "settings.html",
   background: {
     scripts: [""],
     persistent: false
