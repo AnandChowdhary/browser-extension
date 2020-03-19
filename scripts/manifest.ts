@@ -1,4 +1,4 @@
-import { mkdirp, writeJson, readJson, readFile } from "fs-extra";
+import { writeJson, readJson, readFile, readdir } from "fs-extra";
 import { join } from "path";
 import sharp from "sharp";
 
@@ -12,7 +12,7 @@ const manifest = {
     default_popup: "popup.html"
   },
   background: {
-    scripts: ["dist/background.js"],
+    scripts: [""],
     persistent: false
   },
   icons: {
@@ -26,11 +26,16 @@ const manifest = {
 const sizes = [128, 48, 38, 19, 16];
 
 (async () => {
-  await mkdirp(join(__dirname, "..", "dist"));
   const pkg = await readJson(join(__dirname, "..", "package.json"));
   manifest.name = pkg.name;
   manifest.description = pkg.description;
   manifest.version = pkg.version;
+  const builtFiles = await readdir(join(__dirname, "..", "dist"));
+  const backgroundJs = builtFiles.find(
+    file => file.startsWith("background.") && file.endsWith(".js")
+  );
+  if (!backgroundJs) throw new Error("Could not find background JS");
+  manifest.background.scripts[0] = backgroundJs;
   await writeJson(join(__dirname, "..", "dist", "manifest.json"), manifest);
   const icon = await readFile(join(__dirname, "..", "static", "icon.png"));
   for await (const size of sizes) {

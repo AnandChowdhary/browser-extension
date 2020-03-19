@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm-run-all 'clear-dist' 'build-manifest' 'build-popup'",
+    "build": "npm-run-all 'clear-dist' 'build-popup' 'build-manifest'",
     "clear-dist": "rimraf dist",
     "build-manifest": "ts-node scripts/manifest.ts",
     "build-popup": "ts-node scripts/parcel.ts && parcel build dist/popup.html dist/background.html",

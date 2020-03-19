@@ -1,4 +1,4 @@
-import { writeFile, copyFile, copy } from "fs-extra";
+import { writeFile, copyFile, copy, mkdirp } from "fs-extra";
 import { join } from "path";
 
 const html = `<!DOCTYPE html>
@@ -16,6 +16,7 @@ const html = `<!DOCTYPE html>
 const backgroundHtml = `<script src="background.ts"></script>`;
 
 (async () => {
+  await mkdirp(join(__dirname, "..", "dist"));
   await copyFile(
     join(__dirname, "..", "static", "app.scss"),
     join(__dirname, "..", "dist", "app.scss")
