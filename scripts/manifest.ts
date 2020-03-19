@@ -1,4 +1,4 @@
-import { mkdirp, writeJson, readJson, readFile, writeFile } from "fs-extra";
+import { mkdirp, writeJson, readJson, readFile } from "fs-extra";
 import { join } from "path";
 import sharp from "sharp";
 
@@ -34,6 +34,8 @@ const sizes = [128, 48, 38, 19, 16];
   await writeJson(join(__dirname, "..", "dist", "manifest.json"), manifest);
   const icon = await readFile(join(__dirname, "..", "static", "icon.png"));
   for await (const size of sizes) {
-    // await writeFile(join(__dirname, "..", "dist", `icon-${size}.png`), icon);
+    await sharp(icon)
+      .resize(size, size)
+      .toFile(join(__dirname, "..", "dist", `icon-${size}.png`));
   }
 })();
