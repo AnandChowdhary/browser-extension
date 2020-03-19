@@ -1,4 +1,4 @@
-import { writeFile } from "fs-extra";
+import { writeFile, copyFile } from "fs-extra";
 import { join } from "path";
 
 const html = `<!DOCTYPE html>
@@ -14,11 +14,11 @@ const html = `<!DOCTYPE html>
 </html>`;
 
 (async () => {
-  await writeFile(
+  await copyFile(
     join(__dirname, "..", "static", "app.scss"),
     join(__dirname, "..", "dist", "app.scss")
   );
-  await writeFile(
+  await copyFile(
     join(__dirname, "..", "scripts", "app.ts"),
     join(__dirname, "..", "dist", "app.ts")
   );

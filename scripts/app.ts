@@ -1,1 +1,1 @@
-/Users/anandchowdhary/Projects/open-source/browser-extension/dist/app.ts
+console.log(1);
