@@ -8,17 +8,17 @@ const manifest = {
   description: "",
   version: "0.0.0",
   browser_action: {
-    default_icon: "icon16.png",
-    default_popup: "index.html"
+    default_icon: "icon-16.png",
+    default_popup: "popup.html"
   },
   background: {
     scripts: ["dist/background.js"],
     persistent: false
   },
   icons: {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon1-28.png"
   },
   permissions: []
 };
