@@ -1,0 +1,26 @@
+{
+  "name": "@anandchowdhary/browser-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnandChowdhary/browser-extension.git"
+  },
+  "keywords": [
+    "browser extension",
+    "web browser",
+    "chrome",
+    "firefox",
+    "extension"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnandChowdhary/browser-extension/issues"
+  },
+  "homepage": "https://anandchowdhary.github.io/browser-extension/"
+}
