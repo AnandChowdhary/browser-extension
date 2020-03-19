@@ -1,11 +1,15 @@
 {
   "name": "@anandchowdhary/browser-extension",
   "version": "1.0.0",
-  "description": "",
+  "description": "Opinionated starter for building web browser extensions with TypeScript",
   "main": "index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "npm-run-all 'build-manifest'",
+    "build": "npm-run-all 'build-manifest' 'build-popup'",
     "build-manifest": "ts-node scripts/manifest.ts",
+    "build-popup": "ts-node scripts/popup.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
