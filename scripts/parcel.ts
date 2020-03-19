@@ -1,4 +1,4 @@
-import { writeFile, copyFile } from "fs-extra";
+import { writeFile, copyFile, copy } from "fs-extra";
 import { join } from "path";
 
 const html = `<!DOCTYPE html>
@@ -13,14 +13,19 @@ const html = `<!DOCTYPE html>
   </body>
 </html>`;
 
+const backgroundHtml = `<script src="background.ts"></script>`;
+
 (async () => {
   await copyFile(
     join(__dirname, "..", "static", "app.scss"),
     join(__dirname, "..", "dist", "app.scss")
   );
-  await copyFile(
-    join(__dirname, "..", "scripts", "app.ts"),
-    join(__dirname, "..", "dist", "app.ts")
+  await copy(join(__dirname, "..", "scripts"), join(__dirname, "..", "dist"), {
+    recursive: true
+  });
+  await writeFile(
+    join(__dirname, "..", "dist", "background.html"),
+    backgroundHtml
   );
   await writeFile(join(__dirname, "..", "dist", "popup.html"), html);
 })();

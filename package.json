@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm-run-all 'build-manifest' 'build-popup'",
     "build-manifest": "ts-node scripts/manifest.ts",
-    "build-popup": "ts-node scripts/popup.ts && parcel build dist/popup.html",
+    "build-popup": "ts-node scripts/parcel.ts && parcel build dist/popup.html dist/background.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
